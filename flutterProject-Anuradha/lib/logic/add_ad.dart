@@ -44,6 +44,17 @@ class EditAd {
   }
 }
 
+class RateAd {
+  static Future<bool> rateAd(String id,int rate,bool isLiked) async {
+    isLiked = !isLiked;
+    rate = isLiked ? rate-1 : rate-2;
+    print(rate);
+    await Firestore.instance.collection('Ads').document(id).updateData({
+      'rate': rate,
+    });
+return isLiked;
+  }
+}
 class DeleteAd {
   static Future<void> deleteAd(Ad ad) async {
     if (ad.imageId != null) {

@@ -5,6 +5,7 @@ class Ad {
   final String description;
   final double price;
   final String ownerId;
+  final int rate;
   String imageId;
   final bool verified;
   final bool reserved;
@@ -12,7 +13,7 @@ class Ad {
   final String reservedBy;
   String id;
 
-  Ad(this.name, this.description, this.price, this.ownerId, this.imageId,
+  Ad(this.name, this.description, this.price, this.ownerId,this.rate, this.imageId,
       this.timestamp, this.verified, this.reserved, this.reservedBy);
 
   Map<String, dynamic> toMap() {
@@ -21,6 +22,7 @@ class Ad {
       'description': description,
       'price': price,
       'owner_id': ownerId,
+      'rate': rate,
       'image_id': imageId,
       'timestamp': timestamp,
       'verified': verified,
@@ -35,6 +37,7 @@ class Ad {
       map['description'],
       map['price'] is double ? map['price'] : double.tryParse(map['price']),
       map['owner_id'],
+      map['rate'],
       map['image_id'],
       map['timestamp'],
       map['verified'] ?? false,

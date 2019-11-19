@@ -235,6 +235,7 @@ class _AddAdFormState extends State<AddAdForm>
             map['description'],
             double.parse(map['price']),
             widget.ad.ownerId,
+            widget.ad.rate,
             widget.ad.imageId,
             widget.ad.timestamp,
             widget.ad.verified,
@@ -249,7 +250,7 @@ class _AddAdFormState extends State<AddAdForm>
       } else {
         map['owner_id'] = (await FirebaseAuth.instance.currentUser()).uid;
         map['timestamp'] = Timestamp.now();
-
+        map['rate'] = 0;
         try {
           await AddAd.addAd(Ad.fromMap(map), _image);
         } catch (e) {
